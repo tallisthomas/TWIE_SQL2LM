@@ -1,4 +1,4 @@
-**The Word Idea Ever™ SQL to Laravel Migration**
+**The Worst Idea Ever™ SQL to Laravel Migration**
 
 A lightweight tool to convert a full Laravel schema-dump (`php artisan schema:dump`) into fresh, standalone migration files. Ideal for legacy codebases with tangled history of creates, alters, drop columns, and outdated dependencies that can make `php artisan migrate:fresh` unreliable or slow.
 
