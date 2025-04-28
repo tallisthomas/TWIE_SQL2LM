@@ -177,7 +177,8 @@ for table, block in create_blocks:
     print(f"Created: {filename}")
 
 # ---------------------------------------------------
-# 2) Generate add_foreign_keys_to_tables.php
+# 2) Generate z_add_foreign_keys_to_tables.php
+# (z_ to make sure it's going to run after all create_xxx.php files)
 # ---------------------------------------------------
 up_lines = []
 down_lines = []
@@ -197,7 +198,7 @@ foreign_content = foreign_stub.format(
     up_methods="\n".join(up_lines),
     down_methods="\n".join(down_lines)
 )
-fk_filename = "add_foreign_keys_to_tables.php"
+fk_filename = "z_add_foreign_keys_to_tables.php"
 with open(os.path.join(output_dir, fk_filename), 'w', encoding='utf-8') as mf:
     mf.write(foreign_content)
 print(f"Created: {fk_filename}")
