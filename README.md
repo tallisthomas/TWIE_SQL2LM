@@ -17,14 +17,14 @@ A lightweight tool to convert a full Laravel schema-dump (`php artisan schema:du
    - Default input: `../data/mysql‑schema.sql` (output of `php artisan schema:dump`).
 2. **Run the generator**
    ```bash
-   python generate_migrations.py
+   python main.py
    ```
    - The script reads `../data/mysql‑schema.sql`, parses each `CREATE TABLE` block, and:
      - Emits one `create_<table>_table.php` migration per table (columns, primary keys, indexes).
-     - Emits a single `add_foreign_keys_to_tables.php` that applies all foreign keys in `up()` and drops them in `down()`.
+     - Emits a single `z_add_foreign_keys_to_tables.php` that applies all foreign keys in `up()` and drops them in `down()`.
 3. **Review & Apply**
-   - Move the generated folder `../generated_migrations/{timestamp}/` into your Laravel project’s `database/migrations/`.
-   - Run `php artisan migrate` (or include in your test bootstrap process).
+   - Move the generated folder `../generated_migrations/{timestamp}/` into your Laravel project’s `database/testing/migrations/`.
+   - Run `php artisan migrate --path=/path/to/your/migration/directory` (or include in your test bootstrap process).
 
 ---
 
@@ -42,6 +42,8 @@ A lightweight tool to convert a full Laravel schema-dump (`php artisan schema:du
 ## 📝 Disclaimer
 
 This tool is provided **as-is**, for accelerating the reorganization of legacy migration histories. There is **no guarantee** that the generated migrations will run without minor manual adjustments. **Always** review, test in a safe branch, and update as needed before merging.
+
+⚠️ Tool Generation Note: This tool (including this README) was created in approximately 30 minutes using AI assistance (ChatGPT). Please verify and adapt the output to your needs.
 
 ---
 
