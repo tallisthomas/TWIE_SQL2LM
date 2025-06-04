@@ -14,12 +14,12 @@ A lightweight tool to convert a full Laravel schema-dump (`php artisan schema:du
 ## 🚀 How It Works
 
 1. **Place your schema dump**
-   - Default input: `../data/mysql‑schema.sql` (output of `php artisan schema:dump`).
+   - Default input: `../data/mysql-schema.sql` (output of `php artisan schema:dump`).
 2. **Run the generator**
    ```bash
    python main.py
    ```
-   - The script reads `../data/mysql‑schema.sql`, parses each `CREATE TABLE` block, and:
+   - The script reads `../data/mysql-schema.sql`, parses each `CREATE TABLE` block, and:
      - Emits one `create_<table>_table.php` migration per table (columns, primary keys, indexes).
      - Emits a single `z_add_foreign_keys_to_tables.php` that applies all foreign keys in `up()` and drops them in `down()`.
 3. **Review & Apply**
