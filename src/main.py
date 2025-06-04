@@ -136,7 +136,7 @@ def parse_sql_column(line: str) -> str:
     if 'not null' not in opts:
         code += '->nullable()'
     # Default value (escaped)
-    dv = re.search(r"default\s+'([^']*)'", opts) or re.search(r"default\s+([^, ]+)", opts)
+    dv = re.search(r"default\s+'([^']*)'", rest, re.I) or re.search(r"default\s+([^, ]+)", rest, re.I)
     if dv and dv.group(1).lower() != 'null':
         val = dv.group(1).replace("'", "\\'")
         code += f"->default('{val}')"
